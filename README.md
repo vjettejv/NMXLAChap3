@@ -2,7 +2,7 @@
 
 **Tích chập và lọc ảnh trong miền tần số: Biến đổi Fourier và các kỹ thuật lọc**
 
-Demo Streamlit dùng để thuyết trình Chương 3, với sidebar tối, nội dung sáng,
+Ứng dụng Streamlit khám phá xử lý ảnh, với sidebar tối, nội dung sáng,
 ảnh và phổ đồng bộ, tham số trực tiếp, hoạt cảnh DFT → nhân phổ → IDFT,
 Notch tương tác, Inverse/Wiener và benchmark thực tế.
 
@@ -76,11 +76,7 @@ Một số bản Linux cần cài thêm gói venv tương ứng với Python. C�
 2. Chọn nội dung, kéo tham số và quan sát kết quả.
 3. Bật **Hiện code Python** để xem các hàm đang dùng.
 4. Trong **Tùy chỉnh không gian demo**, chọn số ảnh mỗi hàng và chiều cao ảnh.
-5. Bật **Chế độ trình chiếu** khi trình bày; nhấn **Reset** để bắt đầu lại.
-
-**Unsupervised Wiener:** tắt Chế độ trình chiếu → Image Restoration → Wiener Filter → Thiết lập khôi phục → chọn Unsupervised Wiener → nhấn chạy.
-
-Xem [kịch bản thuyết trình](KICH_BAN_THUYET_TRINH.md) hoặc [kịch bản ngắn](DEMO_SCRIPT.md).
+5. Nhấn **Reset** để bắt đầu lại.
 
 ## Các màn hình
 
@@ -95,7 +91,7 @@ Xem [kịch bản thuyết trình](KICH_BAN_THUYET_TRINH.md) hoặc [kịch bả
 | Notch | Nhiễu sin, phát hiện đỉnh, click ứng viên / nhập tọa độ, cặp notch | Mục 4.4, Hình 11–12 |
 | Image Restoration | Inverse có epsilon và noise; Wiener công thức / unsupervised | Mục 5.1–5.2, Hình 14,16 |
 | So sánh Convolution | Direct vs FFT, 10–100 lần, boxplot, xuất JSON | Mục 3.1, Hình 4–5 |
-| Tổng kết | Bảng bộ lọc, quy tắc lựa chọn, kịch bản 7–10 phút | Mục 6–7, Bảng 1 |
+| Tổng kết | Bảng bộ lọc, quy tắc lựa chọn | Mục 6–7, Bảng 1 |
 
 Bám theo báo cáo 6 trang do người dùng cung cấp, không thêm CNN, deep learning
 hay nhận dạng đối tượng. Demo phục hồi tập trung vào Gaussian như yêu cầu;
@@ -178,16 +174,10 @@ Cameraman, Astronaut, Coffee, Chelsea và ảnh Patterns tổng hợp được l
 Không giả danh chúng là Lena/Mandrill/Parrot/Rhino. Đặt các ảnh mong muốn vào
 `sample_images/` (PNG/JPEG/WebP); app tự nhận. Xem nguồn tại `sample_images/README.md`.
 
-## Thuyết trình
-
-Bật **Chế độ trình chiếu** để phóng ảnh/tiêu đề, ẩn menu Streamlit và tùy chọn phụ.
-Sidebar vẫn giữ điều hướng để chuyển phần nhanh. Kịch bản nằm trong `DEMO_SCRIPT.md`
-và trên trang Tổng kết. Reset xóa trạng thái phiên, đưa về ảnh mẫu và Tổng quan.
-
 ## Cấu trúc
 
 ```text
-app.py                  # shell, sidebar, upload, presentation
+app.py                  # shell, sidebar, upload
 views/                  # 10 mục giao diện
 utils/fourier.py        # FFT, padding, OTF, phổ, SNR
 utils/filters.py        # Gaussian, HPF, LPF, DoG, notch, phát hiện đỉnh
@@ -211,7 +201,7 @@ pip check
 
 Kiểm thử numerical bao gồm round-trip FFT, padding, vị trí PSF, mask đối xứng,
 triệt sin bằng notch, khôi phục, xử lý upload và benchmark. AppTest kiểm tra
-điều hướng, tham số, hai chế độ Wiener, Notch, presentation và Reset.
+điều hướng, tham số, hai chế độ Wiener, Notch và Reset.
 
 Tài liệu API: [NumPy FFT](https://numpy.org/doc/stable/reference/routines.fft.html),
 [SciPy convolve](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve.html),
